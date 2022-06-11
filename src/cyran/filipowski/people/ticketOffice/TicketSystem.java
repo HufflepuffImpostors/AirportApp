@@ -2,9 +2,10 @@ package cyran.filipowski.people.ticketOffice;
 
 import cyran.filipowski.people.passenger.Passenger;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class TicketSystem {
+public class TicketSystem implements Serializable {
 
     private static TicketSystem instance;
     //Maps stores amount of available and reserved tickets
@@ -17,10 +18,11 @@ public class TicketSystem {
     ArrayList<Ticket> tickets;
 
 
+
     /**
      * Singleton class
      */
-    private TicketSystem() {
+    public TicketSystem() {
         availableTickets = new HashMap<>();
         reservedTickets = new HashMap<>();
         tickets = new ArrayList<>();
@@ -28,7 +30,7 @@ public class TicketSystem {
         passengerReservedTickets = new HashMap<>();
     }
 
-    public TicketSystem getInstance() {
+    public static TicketSystem getInstance() {
         if (instance == null) {
             instance = new TicketSystem();
         }
@@ -36,19 +38,29 @@ public class TicketSystem {
     }
 
 
-    public boolean createNewTicket(String flightId, Double price) {
-        if (price > 0) {
-            Ticket newTicket = new Ticket(flightId, price);
-            tickets.add(newTicket);
+    public void createNewTicket(String flightId, Double price) {
 
-            return true;
+        try {
+            if (price <= 0) throw new IllegalArgumentException(price.toString());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ticket price is negative!");
+            throw e;
         }
 
-        return false;
+        Ticket newTicket = new Ticket(flightId, price);
+        tickets.add(newTicket);
     }
 
     public boolean reserveTicket(Passenger passenger,String flightId) {
-        if (availableTickets.containsKey(flightId) && availableTickets.get(flightId) > 0) {
+
+        try {
+            if (!availableTickets.containsKey(flightId)) throw new FlightIdNotFoundException(flightId);
+        } catch (FlightIdNotFoundException e) {
+            System.out.println("There is no flight with such id");
+            return false;
+        }
+
+        if (availableTickets.get(flightId) > 0) {
 
             availableTickets.replace(flightId, availableTickets.get(flightId) - 1);
             reservedTickets.putIfAbsent(flightId, 0);
@@ -66,7 +78,15 @@ public class TicketSystem {
     }
 
     public boolean buyTicket(Passenger passenger, String flightId) {
-        if (availableTickets.containsKey(flightId) && availableTickets.get(flightId) > 0) {
+
+        try {
+            if (!availableTickets.containsKey(flightId)) throw new FlightIdNotFoundException(flightId);
+        } catch (FlightIdNotFoundException e) {
+            System.out.println("There is no flight with such id");
+            return false;
+        }
+
+        if (availableTickets.get(flightId) > 0) {
 
             availableTickets.replace(flightId, availableTickets.get(flightId) - 1);
             availableTickets.putIfAbsent(flightId, 0);
@@ -83,9 +103,14 @@ public class TicketSystem {
     }
 
     public boolean cancelTicketReservation(Passenger passenger, String flightId) {
-        if (!reservedTickets.containsKey(flightId)) {
+
+        try {
+            if (!reservedTickets.containsKey(flightId)) throw new FlightIdNotFoundException(flightId);
+        } catch (FlightIdNotFoundException e) {
+            System.out.println("There is no flight with such id");
             return false;
         }
+
         Ticket ticket = getTicketByFlightId(flightId);
         if (!passengerReservedTickets.containsKey(ticket)) {
             return false;
@@ -121,5 +146,33 @@ public class TicketSystem {
             if (t.getFlightId().equals(flightId)) return t;
         }
         return null;
+    }
+
+    public ArrayList<Passenger> getFlightPassengers(String flightId) {
+
+        ArrayList<Passenger> flightPassengers = new ArrayList<>();
+
+        try {
+            if (!availableTickets.containsKey(flightId)) throw new FlightIdNotFoundException(flightId);
+        } catch (FlightIdNotFoundException e) {
+            System.out.println("There is no flight with such id");
+            return flightPassengers;
+        }
+
+        Ticket ticket = getTicketByFlightId(flightId);
+        flightPassengers = passengersTickets.get(ticket);
+
+        return flightPassengers;
+    }
+
+    @Override
+    public String toString() {
+        return "TicketSystem{" +
+                "availableTickets=" + availableTickets +
+                ", reservedTickets=" + reservedTickets +
+                ", passengersTickets=" + passengersTickets +
+                ", passengerReservedTickets=" + passengerReservedTickets +
+                ", tickets=" + tickets +
+                '}';
     }
 }
