@@ -14,7 +14,7 @@ public class FlightControl {
         for(Flight f : flights){
             if(f.getFlightId().equals(flightId)){
                 f.getDeparture().askForPermission(true);
-                return "Flight controlled approved the departure";
+                return "Flight control approved the departure";
             }
         }
         return "No such flight!";
@@ -23,7 +23,7 @@ public class FlightControl {
         for(Flight f : flights){
             if(f.getFlightId().equals(flightId)){
                 f.getArrival().askForPermission(true);
-                return "Flight controlled approved the arrival";
+                return "Flight control approved the arrival";
             }
         }
         return "No such flight!";
