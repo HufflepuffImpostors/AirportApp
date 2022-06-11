@@ -1,5 +1,5 @@
 package cyran.filipowski.objects.events;
 
 public interface IEvent {
-    boolean askForPermission();
+    boolean askForPermission(boolean decision);
 }

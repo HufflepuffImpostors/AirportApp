@@ -13,7 +13,7 @@ public class FlightControl {
     public String allowDeparture(String flightId){
         for(Flight f : flights){
             if(f.getFlightId().equals(flightId)){
-                System.out.println("allow departure"); // TO-DO
+                f.getDeparture().askForPermission(true);
                 return "Flight controlled approved the departure";
             }
         }
@@ -22,7 +22,7 @@ public class FlightControl {
     public String allowArrival(String flightId){
         for(Flight f : flights){
             if(f.getFlightId().equals(flightId)){
-                System.out.println("allow departure"); // TO-DO
+                f.getArrival().askForPermission(true);
                 return "Flight controlled approved the arrival";
             }
         }
@@ -35,4 +35,10 @@ public class FlightControl {
     public String checkWeather(){
         return "The weather is good, go on!"; //TO-DO
     };
+    public Flight getFlight(String flightId){
+        for(Flight f: flights){
+            if(f.getFlightId() == flightId) return f;
+        }
+        return null;
+    }
 }

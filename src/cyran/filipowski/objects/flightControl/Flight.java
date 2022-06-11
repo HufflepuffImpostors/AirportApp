@@ -7,8 +7,6 @@ import cyran.filipowski.people.Person;
 import cyran.filipowski.people.passenger.Passenger;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Flight {
     Departure departure;
@@ -31,6 +29,23 @@ public class Flight {
         return "The flight has started!";
     }
 
-    public String getFlightId() {        return flightId;
+    public String getFlightId() {
+        return flightId;
+    }
+
+    public void setPassengers(ArrayList<Passenger> passengers) {
+        this.passengers = passengers;
+    }
+
+    public void setLuggage(ArrayList<String> luggage) {
+        this.luggage = luggage;
+    }
+
+    public Departure getDeparture() {
+        return departure;
+    }
+
+    public Arrival getArrival() {
+        return arrival;
     }
 }
