@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2023b81-4f2b-4491-a21b-c304600f9a11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/NotEnoughFuelException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Aircraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Aircraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Helicopter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Helicopter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/IAircraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/IAircraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/airport/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/airport/Airport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/airport/Hangar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/airport/Hangar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Arrival.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Arrival.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Departure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Departure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/IEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/IEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
