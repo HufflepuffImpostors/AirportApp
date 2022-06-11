@@ -2,9 +2,10 @@ package cyran.filipowski.people.ticketOffice;
 
 import cyran.filipowski.people.passenger.Passenger;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Ticket {
+public class Ticket implements Serializable {
     String flightId;
     Double price;
     LocalDateTime takeOffTime;

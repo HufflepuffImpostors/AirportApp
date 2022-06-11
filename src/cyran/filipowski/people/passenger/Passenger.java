@@ -11,14 +11,18 @@ public class Passenger extends Person {
     //ArrayList<String> passengerFlights;
     Set<String> passengerFlights;
 
+    String luggage;
+
     public Passenger(String name, String surname) {
         super(name, surname);
         passengerFlights = new HashSet<>();
+        luggage = name + "'s luggage";
     }
 
     public Passenger(String name, String surname, Set<String> passengerTickets) {
         super(name, surname);
         this.passengerFlights = passengerTickets;
+        luggage = name + "'s luggage";
     }
 
     public Set<String> getPassengerFlights() {
@@ -54,5 +58,7 @@ public class Passenger extends Person {
 
     public void leaveLuggage(){}
 
-    public void getLuggage(){}
+    public String getLuggage(){
+        return luggage;
+    }
 }
