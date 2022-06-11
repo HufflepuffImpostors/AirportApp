@@ -16,16 +16,15 @@ public class Flight {
     ArrayList<Passenger> passengers;
     ArrayList<Person> crew;
     Aircraft aircraft;
-    Map<String, Passenger> luggage;
+    ArrayList<String> luggage;
     String flightId;
 
-    public Flight(Departure departure, Arrival arrival, ArrayList<Passenger> passengers, ArrayList<Person> crew, Aircraft aircraft, Map<String, Passenger> luggage, String flightId) {
+    public Flight(Departure departure, Arrival arrival, ArrayList<Passenger> passengers, ArrayList<Person> crew, Aircraft aircraft, String flightId) {
         this.departure = departure;
         this.arrival = arrival;
         this.passengers = new ArrayList<Passenger>();
         this.crew = new ArrayList<Person>();
         this.aircraft = aircraft;
-        this.luggage = new HashMap<String, Passenger>();
         this.flightId = flightId;
     }
     public String fly(){

@@ -11,7 +11,7 @@ public interface IAircraft {
 
     String fuelUp(int amount);
     String fly(int length);
-    String load(Map<String, Passenger> luggage);
-    Map<String, Passenger> unload();
+    String load(ArrayList<String> luggage);
+    ArrayList<String> unload();
     String board(ArrayList<Passenger> passengers);
 }
