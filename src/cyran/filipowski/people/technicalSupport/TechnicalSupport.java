@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class TechnicalSupport {
 
     TicketSystem ticketSystem;
+    FlightControl flightControl;
 
     public TechnicalSupport() {
         ticketSystem = TicketSystem.getInstance();
+        flightControl = FlightControl.getInstance();
     }
 
     public void repairAircraft() {}
@@ -26,16 +28,14 @@ public class TechnicalSupport {
             luggage.add(p.getLuggage());
         }
 
-        //Flight flight = FlightControl.getFlightById();
-        //flight.loadLuggage(luggage);
+        flightControl.getFlight(flightId).setLuggage(luggage);
     }
 
     public void unloadAircraft(String flightId) {
         Ticket ticket = ticketSystem.getTicketByFlightId(flightId);
 
         if (ticket != null) {
-            //Flight flight = FlightControl.getFlightById();
-            //flight.loadLuggage(new ArrayList<>());
+            flightControl.getFlight(flightId).setLuggage(new ArrayList<>());
         } else {
             System.out.println("There is no flight with such id");
         }
@@ -45,16 +45,15 @@ public class TechnicalSupport {
 
     public void boardPassengers(String flightId) {
         ArrayList<Passenger> passengers = ticketSystem.getFlightPassengers(flightId);
-        //Flight flight = FlightControl.getFlightById();
-        //flight.boardPassengers(passengers);
+
+        flightControl.getFlight(flightId).setPassengers(passengers);
     }
 
     public void unboardPassengers(String flightId) {
         Ticket ticket = ticketSystem.getTicketByFlightId(flightId);
 
         if (ticket != null) {
-            //Flight flight = FlightControl.getFlightById();
-            //flight.boardPassengers(new ArrayList<>());
+            flightControl.getFlight(flightId).setPassengers(new ArrayList<>());
         } else {
             System.out.println("There is no flight with such id");
         }

@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a2023b81-4f2b-4491-a21b-c304600f9a11" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dane.data" beforeDir="false" afterPath="$PROJECT_DIR$/dane.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/airport/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/airport/Airport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Arrival.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Arrival.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Departure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Departure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/people/technicalSupport/TechnicalSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/people/technicalSupport/TechnicalSupport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +28,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="29ZFDUUDSwUImaWC5AIwSDOYeOt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
