@@ -6,9 +6,10 @@ import cyran.filipowski.objects.events.Departure;
 import cyran.filipowski.people.crew.Crew;
 import cyran.filipowski.people.passenger.Passenger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Flight {
+public class Flight implements Serializable {
     Departure departure;
     Arrival arrival;
     ArrayList<Passenger> passengers;

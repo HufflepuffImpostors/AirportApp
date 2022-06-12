@@ -2,7 +2,9 @@ package cyran.filipowski.people.crew;
 
 import cyran.filipowski.people.Person;
 
-public class Crew extends Person {
+import java.io.Serializable;
+
+public class Crew extends Person implements Serializable {
 
     Position position;
 

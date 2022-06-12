@@ -227,8 +227,8 @@ public class TicketSystem implements Serializable {
         this.passengers.addAll(passengers);
     }
 
-    public void refreshAvailableTickets() {
-
+    public void setPassengers (ArrayList<Passenger> passengers) {
+        this.passengers = passengers;
     }
 
     @Override

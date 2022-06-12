@@ -1,8 +1,9 @@
 package cyran.filipowski.objects.events;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Departure {
+public class Departure implements Serializable {
     LocalDate time;
     int delay; // in minutes
     String airstrip;
