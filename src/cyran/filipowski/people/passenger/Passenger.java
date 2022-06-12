@@ -61,4 +61,10 @@ public class Passenger extends Person {
     public String getLuggage(){
         return luggage;
     }
+
+    @Override
+    public String toString() {
+        return  getName() + " " +
+                getSurname();
+    }
 }

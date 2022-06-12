@@ -56,4 +56,13 @@ public class Ticket implements Serializable {
     public void setLandingTime(LocalDateTime landingTime) {
         this.landingTime = landingTime;
     }
+
+    @Override
+    public String toString() {
+        return
+                "\nflightId='" + flightId + '\'' +
+                "\n price=" + price +
+                "\n takeOffTime=" + takeOffTime +
+                "\n landingTime=" + landingTime;
+    }
 }

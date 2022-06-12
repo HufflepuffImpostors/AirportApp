@@ -1,5 +1,6 @@
 package cyran.filipowski;
 
+import cyran.filipowski.gui.GUI_Test;
 import cyran.filipowski.objects.airport.Airport;
 import cyran.filipowski.objects.airport.Hangar;
 import cyran.filipowski.objects.flightControl.FlightControl;
@@ -18,6 +19,9 @@ import java.util.HashMap;
 public class Main {
 
     public static void main(String[] args) {
+
+
+        GUI_Test gui_test = new GUI_Test();
 
 //        String filename = "dane.data";
 //

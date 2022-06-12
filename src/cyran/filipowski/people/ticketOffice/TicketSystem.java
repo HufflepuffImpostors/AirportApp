@@ -16,7 +16,7 @@ public class TicketSystem implements Serializable {
     Map<Ticket, ArrayList<Passenger>> passengerReservedTickets;
     //List of all tickets
     ArrayList<Ticket> tickets;
-
+    ArrayList<Passenger> passengers;
 
 
     /**
@@ -28,6 +28,7 @@ public class TicketSystem implements Serializable {
         tickets = new ArrayList<>();
         passengersTickets = new HashMap<>();
         passengerReservedTickets = new HashMap<>();
+        passengers = new ArrayList<>();
     }
 
     public static TicketSystem getInstance() {
@@ -49,6 +50,25 @@ public class TicketSystem implements Serializable {
 
         Ticket newTicket = new Ticket(flightId, price);
         tickets.add(newTicket);
+        System.out.println("New ticket added: " + newTicket);
+    }
+
+    public Passenger createNewPassenger(String name, String surname) {
+        Passenger newPassenger = new Passenger(name, surname);
+
+        passengers.add(newPassenger);
+
+        System.out.println("New passenger created: " + newPassenger.toString());
+
+        return newPassenger;
+    }
+
+    public Passenger findPassenger(String name, String surname) {
+        for (Passenger p : passengers) {
+            if (p.getName().equals(name) && p.getSurname().equals(surname)) return p;
+        }
+
+        return null;
     }
 
     public boolean reserveTicket(Passenger passenger,String flightId) {
@@ -163,6 +183,20 @@ public class TicketSystem implements Serializable {
         flightPassengers = passengersTickets.get(ticket);
 
         return flightPassengers;
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public ArrayList<String> getFlights() {
+        ArrayList<String> flights = new ArrayList<>();
+
+        for (Ticket t : tickets) {
+            flights.add(t.getFlightId());
+        }
+
+        return flights;
     }
 
     @Override
