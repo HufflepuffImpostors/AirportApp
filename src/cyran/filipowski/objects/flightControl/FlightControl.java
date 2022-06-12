@@ -58,7 +58,7 @@ public class FlightControl {
     };
     public Flight getFlight(String flightId){
         for(Flight f: flights){
-            if(f.getFlightId() == flightId) return f;
+            if(f.getFlightId().equals(flightId)) return f;
         }
         return null;
     }
@@ -66,6 +66,7 @@ public class FlightControl {
                                Aircraft aircraft, ArrayList<Passenger> passengers, ArrayList<Crew> crew, String flightId){
         try{
             if(arrivalDate.isBefore(departureDate)) throw new IllegalArgumentException("The dates are wrong!");
+            if(getFlight(flightId)!=null) throw new IllegalArgumentException("There is a flight with that id!");
             Departure dep = new Departure(departureDate, 0, depAirstrip);
             Arrival arr = new Arrival(arrivalDate,0,arrAirstrip);
             Flight newFlight = new Flight(dep, arr,passengers,crew,aircraft,flightId);

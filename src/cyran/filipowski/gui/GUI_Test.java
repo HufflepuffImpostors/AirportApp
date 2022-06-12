@@ -1,16 +1,28 @@
 package cyran.filipowski.gui;
 
+import cyran.filipowski.objects.aircraft.IAircraft;
+import cyran.filipowski.objects.airport.Airport;
+import cyran.filipowski.objects.airport.Hangar;
 import cyran.filipowski.objects.flightControl.Flight;
+import cyran.filipowski.objects.flightControl.FlightControl;
+import cyran.filipowski.people.crew.Crew;
+import cyran.filipowski.people.crew.Position;
 import cyran.filipowski.people.passenger.Passenger;
 import cyran.filipowski.people.ticketOffice.TicketSystem;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
 
 public class GUI_Test {
-    private JTextArea textArea1;
+    private JTextArea consoleTA;
     private JTextField CreateNewTicketFlightIdTextField;
     private JTextField CreateNewTicketPriceTextField;
     private JButton CreateNewTicketBtn;
@@ -30,9 +42,90 @@ public class GUI_Test {
     private JButton RebookTicketBtn;
     private JButton TicketManagementPerformBtn;
 
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+
+
+    private JFormattedTextField departureDateFTF;
+    private JFormattedTextField arrivalDateFTF;
+
+    private JComboBox aircraftCB;
+    private JTextField flightIdTB;
+    private JButton createFlightBT;
+    private JRadioButton arrivalRB;
+    private JButton setFlightPermissionBT;
+    private JCheckBox suspenseAirportCB;
+    private JLabel createFlightLabel;
+    private JLabel departureDateLabel;
+    private JLabel arrivalDateLabel;
+    private JLabel aircraftLabel;
+    private JLabel flightIdLabel;
+    private JLabel permissionsLabel;
+    private JLabel flightPermissionLabel;
+    private JRadioButton departureRB;
+    private JComboBox performFlightCB;
+    private JButton performFlightBT;
+    private JLabel performFlightLB;
+    private JLabel performFlightBigLB;
+    private JComboBox pilotCB;
+    private JLabel pilotLabel;
+    private JComboBox stewardessCB;
+    private JLabel stewardessLabel;
+    private JTextField departureDateTB;
+    private JTextField arrivalDateTB;
+    private JTextField flightPersmissionsCB;
+
     static TicketSystem ticketSystem = TicketSystem.getInstance();
+    static FlightControl flightControl = FlightControl.getInstance();
 
     public GUI_Test() {
+        /*
+        initialization
+         */
+        ArrayList<Crew> crew = new ArrayList<>(Arrays.asList(
+                new Crew("Jan","Kowalski", Position.PILOT),
+                new Crew("Mikołaj","Stryczek", Position.PILOT),
+                new Crew("Adam", "Nowak", Position.STEWARDESS),
+                new Crew("Rafał", "Fatuła", Position.STEWARDESS))
+                );
+
+        pilotCB.addItem(crew.get(0).getName() + " " + crew.get(0).getSurname());
+        pilotCB.addItem(crew.get(1).getName() + " " + crew.get(1).getSurname());
+        stewardessCB.addItem(crew.get(2).getName() + " " + crew.get(2).getSurname());
+        stewardessCB.addItem(crew.get(3).getName() + " " + crew.get(3).getSurname());
+
+
+
+        Airport airport = new Airport(
+                new ArrayList<>(Arrays.asList(
+                        "1",
+                        "2",
+                        "3"
+                )),
+                new ArrayList<>(Arrays.asList(
+                        "long",
+                        "short",
+                        "military"
+                )),
+                new ArrayList<>(Arrays.asList(
+                        "main",
+                        "vip"
+                )),
+                new HashMap<>(){{
+                    put("private",100);
+                    put("public",20);
+                }},
+                new ArrayList<>(Arrays.asList(
+                        new Hangar(),
+                        new Hangar()
+                ))
+        );
+        for(String t : IAircraft.planeTypes){
+            aircraftCB.addItem(t);
+        }
+        for(String t : IAircraft.helicopterTypes){
+            aircraftCB.addItem(t);
+        }
+
         CreateNewTicketBtn.addActionListener(e -> {
             String flightId;
             Double price;
@@ -50,6 +143,7 @@ public class GUI_Test {
         });
 
         CreateNewPassengerBtn.addActionListener(e -> {
+            System.out.println("allah");
             String name;
             String surname;
 
@@ -98,6 +192,34 @@ public class GUI_Test {
                 }
             }
         });
+        createFlightBT.addActionListener( e ->{
+            Flight newF = flightControl.createFlight(
+                    LocalDate.parse(departureDateTB.getText()),
+                    LocalDate.parse(arrivalDateTB.getText()),
+                    airport.getAirstrip(0),
+                    airport.getAirstrip(1),
+                    airport.getHangar(0).getAircraft("airliner"),
+                    new ArrayList<Passenger>(),
+                    new ArrayList<Crew>(),
+                    flightIdTB.getText()
+                );
+            if (newF != null){
+                refreshFlights();
+            }
+        });
+        setFlightPermissionBT.addActionListener(e->{
+            String flightId = flightPersmissionsCB.getText();
+            if(!flightId.isEmpty()){
+                if(arrivalRB.isSelected()){
+                    flightControl.getFlight(flightId).getArrival().askForPermission(true);
+                }
+                else if(departureRB.isSelected()){
+                    flightControl.getFlight(flightId).getDeparture().askForPermission(true);
+                }
+                
+            }
+
+        });
     }
 
     public static void main(String[] args) {
@@ -131,7 +253,7 @@ public class GUI_Test {
         GUI_Test gui_test = new GUI_Test();
 
         ArrayList<String> flights = ticketSystem.getFlights();
-
+        System.out.println(flights);
         for (String f : flights) {
             gui_test.RebookTicketOldFlightIdComboBox.addItem(f);
             gui_test.RebookTicketNewFlightIdComboBox.addItem(f);

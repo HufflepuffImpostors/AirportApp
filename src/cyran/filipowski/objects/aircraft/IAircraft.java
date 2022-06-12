@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public interface IAircraft {
     ArrayList<String> planeTypes = new ArrayList<String>(Arrays.asList("airliner","transporter", "military","boeing","concorde", "airbus", "cesna"));
-    ArrayList<String> helicopterTypes = new ArrayList<String>(Arrays.asList("civilian, military"));
+    ArrayList<String> helicopterTypes = new ArrayList<String>(Arrays.asList("civilian", "military"));
     double fuelEfficiency = 40; // per 100km
 
     String fuelUp(int amount);

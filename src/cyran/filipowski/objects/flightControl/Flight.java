@@ -20,8 +20,8 @@ public class Flight {
     public Flight(Departure departure, Arrival arrival, ArrayList<Passenger> passengers, ArrayList<Crew> crew, Aircraft aircraft, String flightId) {
         this.departure = departure;
         this.arrival = arrival;
-        this.passengers = new ArrayList<Passenger>();
-        this.crew = new ArrayList<Crew>();
+        this.passengers = passengers;
+        this.crew = crew;
         this.aircraft = aircraft;
         this.flightId = flightId;
     }
