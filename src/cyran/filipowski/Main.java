@@ -35,6 +35,7 @@ public class Main {
 //        } catch (IOException | ClassNotFoundException e) {
 //            e.printStackTrace();
 //        }
+        /*
         FlightControl flightControl = FlightControl.getInstance();
         Airport airport = new Airport(
                 new ArrayList<>(Arrays.asList(
@@ -85,5 +86,7 @@ public class Main {
         flightControl.getFlight("0x5").getArrival().askForPermission(true);
         result = flightControl.getFlight("0x5").fly();
         System.out.println(result);
+        */
+
     }
 }
