@@ -62,6 +62,11 @@ public class FlightControl {
         }
         return null;
     }
+
+    public ArrayList<Flight> getAllFlights() {
+        return flights;
+    }
+
     public Flight createFlight(LocalDate departureDate, LocalDate arrivalDate, String depAirstrip, String arrAirstrip,
                                Aircraft aircraft, ArrayList<Passenger> passengers, ArrayList<Crew> crew, String flightId){
         try{

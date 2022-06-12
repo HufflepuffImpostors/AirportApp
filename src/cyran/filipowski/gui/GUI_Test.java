@@ -11,8 +11,6 @@ import cyran.filipowski.people.passenger.Passenger;
 import cyran.filipowski.people.ticketOffice.TicketSystem;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -23,7 +21,6 @@ import java.util.HashMap;
 
 public class GUI_Test {
     private JTextArea consoleTA;
-    private JTextField CreateNewTicketFlightIdTextField;
     private JTextField CreateNewTicketPriceTextField;
     private JButton CreateNewTicketBtn;
     private JTextField CreateNewPassengerNameTextField;
@@ -48,7 +45,7 @@ public class GUI_Test {
     private JFormattedTextField departureDateFTF;
     private JFormattedTextField arrivalDateFTF;
 
-    private JComboBox aircraftCB;
+    private JComboBox<String> aircraftCB;
     private JTextField flightIdTB;
     private JButton createFlightBT;
     private JRadioButton arrivalRB;
@@ -66,13 +63,14 @@ public class GUI_Test {
     private JButton performFlightBT;
     private JLabel performFlightLB;
     private JLabel performFlightBigLB;
-    private JComboBox pilotCB;
+    private JComboBox<String> pilotCB;
     private JLabel pilotLabel;
-    private JComboBox stewardessCB;
+    private JComboBox<String> stewardessCB;
     private JLabel stewardessLabel;
     private JTextField departureDateTB;
     private JTextField arrivalDateTB;
     private JTextField flightPersmissionsCB;
+    private JComboBox<String> CreateNewTicketFlightIdComboBox;
 
     static TicketSystem ticketSystem = TicketSystem.getInstance();
     static FlightControl flightControl = FlightControl.getInstance();
@@ -126,19 +124,26 @@ public class GUI_Test {
             aircraftCB.addItem(t);
         }
 
+        ArrayList<Passenger> passengers = new ArrayList<>(Arrays.asList(
+           new Passenger("Patryk", "Cyran"),
+           new Passenger("Jakub", "Filipowski"),
+           new Passenger("Jakub", "Kościółek"),
+           new Passenger("Konrad", "Kierepka")
+        ));
+
+        ticketSystem.addPassengers(passengers);
+
         CreateNewTicketBtn.addActionListener(e -> {
             String flightId;
             Double price;
 
-            if (!CreateNewTicketFlightIdTextField.getText().isEmpty() && !CreateNewTicketPriceTextField.getText().isEmpty()) {
-                flightId = CreateNewTicketFlightIdTextField.getText();
+            if (!CreateNewTicketPriceTextField.getText().isEmpty()) {
+                flightId = CreateNewTicketFlightIdComboBox.getSelectedItem().toString();
                 price = Double.valueOf(CreateNewTicketPriceTextField.getText().replaceAll(",", "."));
 
                 ticketSystem.createNewTicket(flightId, price);
 
-                RebookTicketOldFlightIdComboBox.addItem(flightId);
-                RebookTicketNewFlightIdComboBox.addItem(flightId);
-                TicketManagementFlightIdComboBox.addItem(flightId);
+                refreshFlights();
             }
         });
 
@@ -154,8 +159,8 @@ public class GUI_Test {
 
             if (!name.isEmpty() && !surname.isEmpty()) {
                 newPassenger = ticketSystem.createNewPassenger(name, surname);
-                RebookTicketPassengerComboBox.addItem(newPassenger);
-                TicketManagementPassengerComboBox.addItem(newPassenger);
+
+                refreshPassengers();
             }
         });
 
@@ -183,12 +188,16 @@ public class GUI_Test {
 
                 if (ReserveTicketRadioBtn.isSelected()) {
                     ticketSystem.reserveTicket(passenger, flightId);
+                    System.out.println("Ticket for flight " + flightId + " reserved by " + passenger);
                 } else if (CancelReservationRadioBtn.isSelected()) {
                     ticketSystem.cancelTicketReservation(passenger, flightId);
+                    System.out.println("Ticket reservation for flight " + flightId + " cancelled by " + passenger);
                 } else if (BuyTicketRadioBtn.isSelected()) {
                     ticketSystem.buyTicket(passenger, flightId);
+                    System.out.println("Ticket for flight " + flightId + " bought by " + passenger);
                 } else if (CancelTicketRadioBtn.isSelected()) {
                     ticketSystem.cancelTicket(passenger, flightId);
+                    System.out.println("Ticket for flight " + flightId + " returned by " + passenger);
                 }
             }
         });
@@ -235,12 +244,24 @@ public class GUI_Test {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
 
-        refreshPassengers();
+        gui_test.BuyTicketRadioBtn.setSelected(true);
+
+        initFlights(gui_test);
+        initPassengers(gui_test);
     }
 
-    private static void refreshPassengers() {
-        GUI_Test gui_test = new GUI_Test();
+    private static void initFlights(GUI_Test gui_test) {
+        ArrayList<String> flightIds = ticketSystem.getFlightIds();
+        for (String f : flightIds) {
+            System.out.println(f);
+            gui_test.RebookTicketOldFlightIdComboBox.addItem(f);
+            gui_test.RebookTicketNewFlightIdComboBox.addItem(f);
+            gui_test.TicketManagementFlightIdComboBox.addItem(f);
+            gui_test.CreateNewTicketFlightIdComboBox.addItem(f);
+        }
+    }
 
+    private static void initPassengers(GUI_Test gui_test) {
         ArrayList<Passenger> passengers = ticketSystem.getPassengers();
 
         for (Passenger p : passengers) {
@@ -249,15 +270,48 @@ public class GUI_Test {
         }
     }
 
-    private static void refreshFlights() {
-        GUI_Test gui_test = new GUI_Test();
+    private void refreshPassengers() {
+        ArrayList<Passenger> passengers = ticketSystem.getPassengers();
 
-        ArrayList<String> flights = ticketSystem.getFlights();
-        System.out.println(flights);
-        for (String f : flights) {
-            gui_test.RebookTicketOldFlightIdComboBox.addItem(f);
-            gui_test.RebookTicketNewFlightIdComboBox.addItem(f);
-            gui_test.TicketManagementFlightIdComboBox.addItem(f);
+        Passenger passenger1 = (Passenger) RebookTicketPassengerComboBox.getSelectedItem();
+        Passenger passenger2 = (Passenger) RebookTicketPassengerComboBox.getSelectedItem();
+
+        RebookTicketPassengerComboBox.removeAllItems();
+        TicketManagementPassengerComboBox.removeAllItems();
+
+        for (Passenger p : passengers) {
+            RebookTicketPassengerComboBox.addItem(p);
+            TicketManagementPassengerComboBox.addItem(p);
         }
+
+        if (passenger1 != null) RebookTicketPassengerComboBox.setSelectedItem(passenger1);
+        if (passenger1 != null) TicketManagementPassengerComboBox.setSelectedItem(passenger2);
+    }
+
+    private void refreshFlights() {
+
+        ArrayList<String> flightIds = ticketSystem.getFlightIds();
+
+        String flight1 = RebookTicketOldFlightIdComboBox.toString();
+        String flight2 = RebookTicketNewFlightIdComboBox.toString();
+        String flight3 = TicketManagementFlightIdComboBox.toString();
+        String flight4 = CreateNewTicketFlightIdComboBox.toString();
+
+        RebookTicketOldFlightIdComboBox.removeAllItems();
+        RebookTicketNewFlightIdComboBox.removeAllItems();
+        TicketManagementFlightIdComboBox.removeAllItems();
+        CreateNewTicketFlightIdComboBox.removeAllItems();
+
+        for (String f : flightIds) {
+            RebookTicketOldFlightIdComboBox.addItem(f);
+            RebookTicketNewFlightIdComboBox.addItem(f);
+            TicketManagementFlightIdComboBox.addItem(f);
+            CreateNewTicketFlightIdComboBox.addItem(f);
+        }
+
+        if (!flight1.isEmpty()) RebookTicketOldFlightIdComboBox.setSelectedItem(flight1);
+        if (!flight2.isEmpty()) RebookTicketNewFlightIdComboBox.setSelectedItem(flight2);
+        if (!flight3.isEmpty()) TicketManagementFlightIdComboBox.setSelectedItem(flight3);
+        if (!flight4.isEmpty()) CreateNewTicketFlightIdComboBox.setSelectedItem(flight4);
     }
 }

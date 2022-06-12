@@ -1,5 +1,7 @@
 package cyran.filipowski.people.ticketOffice;
 
+import cyran.filipowski.objects.flightControl.Flight;
+import cyran.filipowski.objects.flightControl.FlightControl;
 import cyran.filipowski.people.passenger.Passenger;
 
 import java.io.Serializable;
@@ -8,6 +10,7 @@ import java.util.*;
 public class TicketSystem implements Serializable {
 
     private static TicketSystem instance;
+    private FlightControl flightControl;
     //Maps stores amount of available and reserved tickets
     Map<String, Integer> availableTickets;
     Map<String, Integer> reservedTickets;
@@ -29,6 +32,7 @@ public class TicketSystem implements Serializable {
         passengersTickets = new HashMap<>();
         passengerReservedTickets = new HashMap<>();
         passengers = new ArrayList<>();
+        flightControl = FlightControl.getInstance();
     }
 
     public static TicketSystem getInstance() {
@@ -48,9 +52,19 @@ public class TicketSystem implements Serializable {
             throw e;
         }
 
-        Ticket newTicket = new Ticket(flightId, price);
-        tickets.add(newTicket);
-        System.out.println("New ticket added: " + newTicket);
+        ArrayList<Flight> flights = flightControl.getAllFlights();
+        for (Flight f : flights) {
+            if (f.getFlightId().equals(flightId)) {
+                Ticket newTicket = new Ticket(flightId, price);
+                tickets.add(newTicket);
+                availableTickets.putIfAbsent(flightId, 100);
+                reservedTickets.putIfAbsent(flightId, 0);
+                System.out.println("New ticket added: " + newTicket);
+                return;
+            }
+        }
+
+        System.out.println("There is no flight with given id: " + flightId);
     }
 
     public Passenger createNewPassenger(String name, String surname) {
@@ -197,6 +211,24 @@ public class TicketSystem implements Serializable {
         }
 
         return flights;
+    }
+
+    public ArrayList<String> getFlightIds() {
+        ArrayList<String> flightIds = new ArrayList<>();
+
+        for (Flight f : flightControl.getAllFlights()) {
+            flightIds.add(f.getFlightId());
+        }
+
+        return flightIds;
+    }
+
+    public void addPassengers (ArrayList<Passenger> passengers) {
+        this.passengers.addAll(passengers);
+    }
+
+    public void refreshAvailableTickets() {
+
     }
 
     @Override
