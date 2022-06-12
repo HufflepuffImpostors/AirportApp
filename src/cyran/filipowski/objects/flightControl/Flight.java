@@ -26,7 +26,12 @@ public class Flight {
         this.flightId = flightId;
     }
     public String fly(){
-        return "The flight has started!";
+        System.out.println(departure.permissionStatus() + " " + arrival.permissionStatus());
+        if(departure.permissionStatus() && arrival.permissionStatus()){
+
+            return "The flight has been successful!";
+        }
+        return "The flight misses some permission!";
     }
 
     public String getFlightId() {

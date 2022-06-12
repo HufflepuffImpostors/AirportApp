@@ -17,4 +17,22 @@ public class Airport {
         this.carparks = carparks;
         this.hangars = hangars;
     }
+    public Hangar getHangar(int number){
+        try{
+            if(number >= hangars.size() || number < 0) throw new IllegalArgumentException("There isn't a hangar with this number!");
+            return hangars.get(number);
+        }
+        catch(IllegalArgumentException e){
+            return null;
+        }
+    }
+    public String getAirstrip(int number){
+        try{
+            if(number >= airstrips.size() || number < 0) throw new IllegalArgumentException("There isn't an airstrip with this number!");
+            return airstrips.get(number);
+        }
+        catch(IllegalArgumentException e){
+            return null;
+        }
+    }
 }
