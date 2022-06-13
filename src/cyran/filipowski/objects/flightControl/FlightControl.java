@@ -31,31 +31,24 @@ public class FlightControl {
         return instance;
     }
 
-    public String allowDeparture(String flightId){
+    public String setDepartureAllowance(String flightId,boolean decision){
         for(Flight f : flights){
             if(f.getFlightId().equals(flightId)){
-                f.getDeparture().askForPermission(true);
-                return "Flight control approved the departure";
+                f.getDeparture().askForPermission(decision);
+                return "Flight control changed the departure";
             }
         }
         return "No such flight!";
     };
-    public String allowArrival(String flightId){
+    public String setArrivalAllowance(String flightId, boolean decision){
         for(Flight f : flights){
             if(f.getFlightId().equals(flightId)){
-                f.getArrival().askForPermission(true);
-                return "Flight control approved the arrival";
+                f.getArrival().askForPermission(decision);
+                return "Flight control changed the arrival";
             }
         }
         return "No such flight!";
-    };
-    public String setSuspensionStatus(boolean status){
-        suspensionStatus = status;
-        return "The suspension status has been set to " + (status?"open":"closed");
-    };
-    public String checkWeather(){
-        return "The weather is good, go on!"; //TO-DO
-    };
+    }
     public Flight getFlight(String flightId){
         for(Flight f: flights){
             if(f.getFlightId().equals(flightId)) return f;
@@ -82,5 +75,14 @@ public class FlightControl {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+    public String removeFlight(String flightId){
+        for(Flight f: flights){
+            if(f.getFlightId().equals(flightId)) {
+                flights.remove(f);
+                return "Flight has been removed!";
+            }
+        }
+        return "No flight has been removed!";
     }
 }

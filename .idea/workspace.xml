@@ -8,8 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/people/ticketOffice/TicketSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/people/ticketOffice/TicketSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,12 +101,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "116",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "366"
-  }
-}]]></component>
   <component name="RunManager" selected="Application.GUI_Test">
     <configuration name="GUI_Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cyran.filipowski.gui.GUI_Test" />

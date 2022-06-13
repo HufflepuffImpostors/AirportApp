@@ -8,6 +8,7 @@ import cyran.filipowski.objects.flightControl.FlightControl;
 import cyran.filipowski.people.crew.Crew;
 import cyran.filipowski.people.crew.Position;
 import cyran.filipowski.people.passenger.Passenger;
+import cyran.filipowski.people.technicalSupport.TechnicalSupport;
 import cyran.filipowski.people.ticketOffice.TicketSystem;
 
 import javax.swing.*;
@@ -20,7 +21,6 @@ import java.util.HashMap;
 
 
 public class GUI_Test {
-    private JTextArea consoleTA;
     private JTextField CreateNewTicketPriceTextField;
     private JButton CreateNewTicketBtn;
     private JTextField CreateNewPassengerNameTextField;
@@ -71,6 +71,8 @@ public class GUI_Test {
     private JTextField arrivalDateTB;
     private JTextField flightPersmissionsCB;
     private JComboBox<String> CreateNewTicketFlightIdComboBox;
+    private JRadioButton allowRB;
+    private JRadioButton denyRB;
 
     static TicketSystem ticketSystem = TicketSystem.getInstance();
     static FlightControl flightControl = FlightControl.getInstance();
@@ -85,7 +87,7 @@ public class GUI_Test {
                 new Crew("Adam", "Nowak", Position.STEWARDESS),
                 new Crew("Rafał", "Fatuła", Position.STEWARDESS))
                 );
-
+        TechnicalSupport technicalSupport = new TechnicalSupport();
         pilotCB.addItem(crew.get(0).getName() + " " + crew.get(0).getSurname());
         pilotCB.addItem(crew.get(1).getName() + " " + crew.get(1).getSurname());
         stewardessCB.addItem(crew.get(2).getName() + " " + crew.get(2).getSurname());
@@ -148,7 +150,6 @@ public class GUI_Test {
         });
 
         CreateNewPassengerBtn.addActionListener(e -> {
-            System.out.println("allah");
             String name;
             String surname;
 
@@ -219,15 +220,32 @@ public class GUI_Test {
         setFlightPermissionBT.addActionListener(e->{
             String flightId = flightPersmissionsCB.getText();
             if(!flightId.isEmpty()){
-                if(arrivalRB.isSelected()){
-                    flightControl.getFlight(flightId).getArrival().askForPermission(true);
-                }
-                else if(departureRB.isSelected()){
-                    flightControl.getFlight(flightId).getDeparture().askForPermission(true);
-                }
-                
+                if(arrivalRB.isSelected()) flightControl.setArrivalAllowance(flightId, allowRB.isSelected());
+                else if(departureRB.isSelected()) flightControl.setDepartureAllowance(flightId, allowRB.isSelected());
             }
 
+        });
+        performFlightBT.addActionListener(e->{
+            String flightId = performFlightCB.getSelectedItem().toString();
+            Flight selected = flightControl.getFlight(flightId);
+            if(selected.getDeparture().permissionStatus() && selected.getArrival().permissionStatus()){
+                technicalSupport.loadAircraft(flightId);
+                technicalSupport.boardPassengers(flightId);
+                System.out.println("Aircraft has been loaded and boarded!");
+                System.out.println(selected.fly());
+                technicalSupport.unboardPassengers(flightId);
+                technicalSupport.unloadAircraft(flightId);
+                System.out.println("Aircraft has been unloaded and unboarded!");
+                System.out.println(flightControl.removeFlight(flightId));
+                refreshFlights();
+            }
+            else System.out.println("The flight hasn't got permissions to perform!");
+        });
+        suspenseAirportCB.addActionListener(e->{
+            createFlightBT.setEnabled(!suspenseAirportCB.isSelected());
+            setFlightPermissionBT.setEnabled(!suspenseAirportCB.isSelected());
+            performFlightBT.setEnabled(!suspenseAirportCB.isSelected());
+            System.out.println("Suspension status set to " + suspenseAirportCB.isSelected());
         });
     }
 
@@ -301,12 +319,14 @@ public class GUI_Test {
         RebookTicketNewFlightIdComboBox.removeAllItems();
         TicketManagementFlightIdComboBox.removeAllItems();
         CreateNewTicketFlightIdComboBox.removeAllItems();
+        performFlightCB.removeAllItems();
 
         for (String f : flightIds) {
             RebookTicketOldFlightIdComboBox.addItem(f);
             RebookTicketNewFlightIdComboBox.addItem(f);
             TicketManagementFlightIdComboBox.addItem(f);
             CreateNewTicketFlightIdComboBox.addItem(f);
+            performFlightCB.addItem(f);
         }
 
         if (!flight1.isEmpty()) RebookTicketOldFlightIdComboBox.setSelectedItem(flight1);

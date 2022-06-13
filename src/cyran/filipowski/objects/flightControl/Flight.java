@@ -5,6 +5,7 @@ import cyran.filipowski.objects.events.Arrival;
 import cyran.filipowski.objects.events.Departure;
 import cyran.filipowski.people.crew.Crew;
 import cyran.filipowski.people.passenger.Passenger;
+import cyran.filipowski.people.technicalSupport.TechnicalSupport;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,9 @@ public class Flight {
         this.flightId = flightId;
     }
     public String fly(){
-        System.out.println(departure.permissionStatus() + " " + arrival.permissionStatus());
         if(departure.permissionStatus() && arrival.permissionStatus()){
-
+            aircraft.fly(50);
+            aircraft.fuelUp(50);
             return "The flight has been successful!";
         }
         return "The flight misses some permission!";
