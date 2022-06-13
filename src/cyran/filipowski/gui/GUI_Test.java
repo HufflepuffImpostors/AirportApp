@@ -178,9 +178,8 @@ public class GUI_Test {
                     !RebookTicketNewFlightIdComboBox.getSelectedItem().toString().isEmpty()) {
 
                 Passenger passenger = (Passenger) RebookTicketPassengerComboBox.getSelectedItem();
-                //String[] passengerText = RebookTicketPassengerComboBox.getSelectedItem().toString().split(" ");
-                String oldFlightText = RebookTicketOldFlightIdComboBox.getSelectedItem().toString();//.split(" ");
-                String newFlightText = RebookTicketNewFlightIdComboBox.getSelectedItem().toString();//.split(" ");
+                String oldFlightText = RebookTicketOldFlightIdComboBox.getSelectedItem().toString();
+                String newFlightText = RebookTicketNewFlightIdComboBox.getSelectedItem().toString();
 
                 ticketSystem.changeTicketReservation(passenger, oldFlightText, newFlightText);
             }

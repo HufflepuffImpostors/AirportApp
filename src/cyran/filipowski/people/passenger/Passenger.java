@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Passenger extends Person implements Serializable {
-    //ArrayList<String> passengerFlights;
     Set<String> passengerFlights;
 
     String luggage;
@@ -38,26 +37,12 @@ public class Passenger extends Person implements Serializable {
         passengerFlights.add(flightId);
     }
 
-    public void reserveTicket(String flightId) {
-
-    }
-
     public void changeReservation(String prevFlightId, String newFlightId) {
         if (passengerFlights.contains(newFlightId)) {
             passengerFlights.remove(prevFlightId);
             passengerFlights.add(newFlightId);
         }
     }
-
-    public void refundTicket(String flightId) {
-
-    }
-
-    public void orderFood() {
-
-    }
-
-    public void leaveLuggage(){}
 
     public String getLuggage(){
         return luggage;
