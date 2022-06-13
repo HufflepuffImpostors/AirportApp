@@ -3,7 +3,11 @@
   <grid id="27dc6" binding="MainFrame" layout-manager="GridLayoutManager" row-count="26" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
+<<<<<<< HEAD
       <xy x="20" y="20" width="997" height="886"/>
+=======
+      <xy x="20" y="20" width="997" height="859"/>
+>>>>>>> 16a418e3c75b60394d2e14f555c7c81e87cad07c
     </constraints>
     <properties>
       <toolTipText value=""/>
@@ -401,6 +405,7 @@
       </component>
       <component id="6cd70" class="javax.swing.JComboBox" binding="RebookTicketNewFlightIdComboBox">
         <constraints>
+<<<<<<< HEAD
           <grid row="11" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
@@ -408,6 +413,11 @@
       <component id="aff32" class="javax.swing.JButton" binding="RebookTicketBtn">
         <constraints>
           <grid row="12" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+=======
+          <grid row="25" column="6" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+>>>>>>> 16a418e3c75b60394d2e14f555c7c81e87cad07c
         </constraints>
         <properties>
           <text value="Rebook"/>
@@ -545,6 +555,48 @@
           <grid row="10" column="1" row-span="1" col-span="4" vsize-policy="2" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
+      </component>
+      <component id="d0435" class="javax.swing.JButton" binding="SaveBtn">
+        <constraints>
+          <grid row="21" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save"/>
+        </properties>
+      </component>
+      <component id="61c0f" class="javax.swing.JButton" binding="LoadBtn">
+        <constraints>
+          <grid row="22" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Load"/>
+        </properties>
+      </component>
+      <component id="3063c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save and Load"/>
+        </properties>
+      </component>
+      <component id="1e677" class="javax.swing.JTextField" binding="FilenameTextField">
+        <constraints>
+          <grid row="20" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="save"/>
+        </properties>
+      </component>
+      <component id="55bb2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="20" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Filename"/>
+        </properties>
       </component>
     </children>
   </grid>

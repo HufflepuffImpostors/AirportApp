@@ -74,8 +74,11 @@ public class GUI_Test {
     private JTextField arrivalDateTB;
     private JTextField flightPersmissionsCB;
     private JComboBox<String> CreateNewTicketFlightIdComboBox;
+<<<<<<< HEAD
     private JRadioButton allowRB;
     private JRadioButton denyRB;
+=======
+>>>>>>> 16a418e3c75b60394d2e14f555c7c81e87cad07c
     private JButton SaveBtn;
     private JButton LoadBtn;
     private JTextField FilenameTextField;
@@ -253,6 +256,35 @@ public class GUI_Test {
             performFlightBT.setEnabled(!suspenseAirportCB.isSelected());
             System.out.println("Suspension status set to " + suspenseAirportCB.isSelected());
 
+        });
+        SaveBtn.addActionListener(e -> {
+            String filename = "save";
+
+            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
+
+            try {
+                ArrayList<Object> objects = new ArrayList<>();
+                objects.add(ticketSystem);
+                objects.add(flightControl);
+                SerializationUtils.serialize(objects, filename);
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        });
+        LoadBtn.addActionListener(e -> {
+            String filename = "save";
+
+            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
+
+            try {
+                ArrayList<Object> objects = (ArrayList<Object>) SerializationUtils.deserialize(filename);
+                ticketSystem = (TicketSystem) objects.get(0);
+                flightControl = (FlightControl) objects.get(1);
+                refreshPassengers();
+                refreshFlights();
+            } catch (IOException | ClassNotFoundException exception) {
+                exception.printStackTrace();
+            }
         });
         SaveBtn.addActionListener(e -> {
             String filename = "save";

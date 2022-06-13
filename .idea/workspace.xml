@@ -118,10 +118,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "116",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "416",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+>>>>>>> 16a418e3c75b60394d2e14f555c7c81e87cad07c
   <component name="RunManager" selected="Application.GUI_Test">
     <configuration name="GUI_Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cyran.filipowski.gui.GUI_Test" />
