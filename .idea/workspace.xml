@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2023b81-4f2b-4491-a21b-c304600f9a11" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" afterDir="false" />
-    </list>
+    <list default="true" id="12cc80d5-7123-40fd-8962-5f18a3481b82" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
