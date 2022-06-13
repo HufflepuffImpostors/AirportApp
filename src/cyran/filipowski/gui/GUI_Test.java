@@ -1,5 +1,6 @@
 package cyran.filipowski.gui;
 
+import cyran.filipowski.SerializationUtils;
 import cyran.filipowski.objects.aircraft.IAircraft;
 import cyran.filipowski.objects.airport.Airport;
 import cyran.filipowski.objects.airport.Hangar;
@@ -12,6 +13,8 @@ import cyran.filipowski.people.technicalSupport.TechnicalSupport;
 import cyran.filipowski.people.ticketOffice.TicketSystem;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -73,6 +76,9 @@ public class GUI_Test {
     private JComboBox<String> CreateNewTicketFlightIdComboBox;
     private JRadioButton allowRB;
     private JRadioButton denyRB;
+    private JButton SaveBtn;
+    private JButton LoadBtn;
+    private JTextField FilenameTextField;
 
     static TicketSystem ticketSystem = TicketSystem.getInstance();
     static FlightControl flightControl = FlightControl.getInstance();
@@ -246,6 +252,36 @@ public class GUI_Test {
             setFlightPermissionBT.setEnabled(!suspenseAirportCB.isSelected());
             performFlightBT.setEnabled(!suspenseAirportCB.isSelected());
             System.out.println("Suspension status set to " + suspenseAirportCB.isSelected());
+
+        });
+        SaveBtn.addActionListener(e -> {
+            String filename = "save";
+
+            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
+
+            try {
+                ArrayList<Object> objects = new ArrayList<>();
+                objects.add(ticketSystem);
+                objects.add(flightControl);
+                SerializationUtils.serialize(objects, filename);
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        });
+        LoadBtn.addActionListener(e -> {
+            String filename = "save";
+
+            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
+
+            try {
+                ArrayList<Object> objects = (ArrayList<Object>) SerializationUtils.deserialize(filename);
+                ticketSystem = (TicketSystem) objects.get(0);
+                flightControl = (FlightControl) objects.get(1);
+                refreshPassengers();
+                refreshFlights();
+            } catch (IOException | ClassNotFoundException exception) {
+                exception.printStackTrace();
+            }
         });
     }
 

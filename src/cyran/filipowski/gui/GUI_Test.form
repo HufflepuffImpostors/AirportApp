@@ -339,7 +339,9 @@
       </component>
       <component id="77069" class="javax.swing.JLabel">
         <constraints>
-          <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="45" height="23"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Decision"/>
@@ -347,7 +349,9 @@
       </component>
       <component id="84fee" class="javax.swing.JRadioButton" binding="allowRB">
         <constraints>
-          <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="53" height="23"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Allow"/>
@@ -355,7 +359,9 @@
       </component>
       <component id="51d4d" class="javax.swing.JRadioButton" binding="denyRB">
         <constraints>
-          <grid row="10" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="50" height="23"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Deny"/>
@@ -377,17 +383,13 @@
       </component>
       <component id="7f63b" class="javax.swing.JLabel">
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="62" height="23"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Old FlightId"/>
         </properties>
-      </component>
-      <component id="6d4be" class="javax.swing.JComboBox" binding="RebookTicketOldFlightIdComboBox">
-        <constraints>
-          <grid row="10" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
       </component>
       <component id="a847" class="javax.swing.JLabel">
         <constraints>
@@ -495,6 +497,54 @@
         <properties>
           <text value="Perform"/>
         </properties>
+      </component>
+      <component id="d0435" class="javax.swing.JButton" binding="SaveBtn">
+        <constraints>
+          <grid row="21" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save"/>
+        </properties>
+      </component>
+      <component id="61c0f" class="javax.swing.JButton" binding="LoadBtn">
+        <constraints>
+          <grid row="22" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Load"/>
+        </properties>
+      </component>
+      <component id="3063c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save and Load"/>
+        </properties>
+      </component>
+      <component id="1e677" class="javax.swing.JTextField" binding="FilenameTextField">
+        <constraints>
+          <grid row="20" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="save"/>
+        </properties>
+      </component>
+      <component id="55bb2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="20" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Filename"/>
+        </properties>
+      </component>
+      <component id="6d4be" class="javax.swing.JComboBox" binding="RebookTicketOldFlightIdComboBox">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="4" vsize-policy="2" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

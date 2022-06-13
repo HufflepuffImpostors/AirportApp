@@ -7,10 +7,11 @@ import cyran.filipowski.people.crew.Crew;
 import cyran.filipowski.people.passenger.Passenger;
 import cyran.filipowski.people.ticketOffice.TicketSystem;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class FlightControl {
+public class FlightControl implements Serializable {
     ArrayList<Flight> flights;
     boolean suspensionStatus;
     private static FlightControl instance;
@@ -58,6 +59,10 @@ public class FlightControl {
 
     public ArrayList<Flight> getAllFlights() {
         return flights;
+    }
+
+    public void setAllFlights(ArrayList<Flight> flights) {
+        this.flights = flights;
     }
 
     public Flight createFlight(LocalDate departureDate, LocalDate arrivalDate, String depAirstrip, String arrAirstrip,

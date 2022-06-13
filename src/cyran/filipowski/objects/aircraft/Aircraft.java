@@ -2,9 +2,10 @@ package cyran.filipowski.objects.aircraft;
 
 import cyran.filipowski.people.passenger.Passenger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Aircraft implements IAircraft{
+public abstract class Aircraft implements IAircraft, Serializable {
     int fuel = 200;
     double maxSpeed;
     int passengerCapacity, luggageCapacity;

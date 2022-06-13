@@ -3,11 +3,12 @@ package cyran.filipowski.people.passenger;
 import cyran.filipowski.people.Person;
 import cyran.filipowski.people.ticketOffice.Ticket;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Passenger extends Person {
+public class Passenger extends Person implements Serializable {
     //ArrayList<String> passengerFlights;
     Set<String> passengerFlights;
 
