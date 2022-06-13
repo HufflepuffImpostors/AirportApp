@@ -74,11 +74,8 @@ public class GUI_Test {
     private JTextField arrivalDateTB;
     private JTextField flightPersmissionsCB;
     private JComboBox<String> CreateNewTicketFlightIdComboBox;
-<<<<<<< HEAD
     private JRadioButton allowRB;
     private JRadioButton denyRB;
-=======
->>>>>>> 16a418e3c75b60394d2e14f555c7c81e87cad07c
     private JButton SaveBtn;
     private JButton LoadBtn;
     private JTextField FilenameTextField;
