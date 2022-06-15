@@ -6,22 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a2023b81-4f2b-4491-a21b-c304600f9a11" name="Changes" comment="added Serializaton&#10;&#10;Serialization for ticketSystem and flightControll, with saving and loading from given files">
       <changelist_data name="patrykcyran" email="patrykcyranek@gmail.com" date="1655060914000" />
-      <change afterPath="$PROJECT_DIR$/passengers.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Aircraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/aircraft/Aircraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Arrival.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Arrival.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Departure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/events/Departure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/objects/flightControl/FlightControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/people/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/people/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/people/crew/Crew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/people/crew/Crew.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/people/passenger/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/people/passenger/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/people/ticketOffice/TicketSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/people/ticketOffice/TicketSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cyran/filipowski/gui/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,10 +108,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Application.GUI_Test">
-    <configuration name="GUI_Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cyran.filipowski.gui.GUI_Test" />
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cyran.filipowski.gui.GUI" />
       <module name="untitled104" />
       <extension name="coverage">
         <pattern>
@@ -164,6 +152,8 @@
       <workItem from="1655045974595" duration="4245000" />
       <workItem from="1655050979867" duration="69000" />
       <workItem from="1655058694097" duration="2036000" />
+      <workItem from="1655208462355" duration="227000" />
+      <workItem from="1655286252755" duration="2179000" />
     </task>
     <servers />
   </component>

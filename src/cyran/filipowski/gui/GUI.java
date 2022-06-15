@@ -13,7 +13,8 @@ import cyran.filipowski.people.technicalSupport.TechnicalSupport;
 import cyran.filipowski.people.ticketOffice.TicketSystem;
 
 import javax.swing.*;
-import java.io.FileNotFoundException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-public class GUI_Test {
+public class GUI {
     private JTextField CreateNewTicketPriceTextField;
     private JButton CreateNewTicketBtn;
     private JTextField CreateNewPassengerNameTextField;
@@ -76,14 +77,14 @@ public class GUI_Test {
     private JComboBox<String> CreateNewTicketFlightIdComboBox;
     private JRadioButton allowRB;
     private JRadioButton denyRB;
-    private JButton SaveBtn;
-    private JButton LoadBtn;
     private JTextField FilenameTextField;
+    private JButton SerializeBtn;
+    private JButton DeserializeBtn;
 
     static TicketSystem ticketSystem = TicketSystem.getInstance();
     static FlightControl flightControl = FlightControl.getInstance();
 
-    public GUI_Test() {
+    public GUI() {
         /*
         initialization
          */
@@ -253,62 +254,38 @@ public class GUI_Test {
             System.out.println("Suspension status set to " + suspenseAirportCB.isSelected());
 
         });
-        SaveBtn.addActionListener(e -> {
-            String filename = "save";
+        SerializeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String filename = "save";
 
-            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
-
-            try {
-                ArrayList<Object> objects = new ArrayList<>();
-                objects.add(ticketSystem);
-                objects.add(flightControl);
-                SerializationUtils.serialize(objects, filename);
-            } catch (IOException exception) {
-                exception.printStackTrace();
+                if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
+                try {
+                    ArrayList<Object> objects = new ArrayList<>();
+                    objects.add(ticketSystem);
+                    objects.add(flightControl);
+                    SerializationUtils.serialize(objects, filename);
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
         });
-        LoadBtn.addActionListener(e -> {
-            String filename = "save";
+        DeserializeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String filename = "save";
 
-            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
+                if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
 
-            try {
-                ArrayList<Object> objects = (ArrayList<Object>) SerializationUtils.deserialize(filename);
-                ticketSystem = (TicketSystem) objects.get(0);
-                flightControl = (FlightControl) objects.get(1);
-                refreshPassengers();
-                refreshFlights();
-            } catch (IOException | ClassNotFoundException exception) {
-                exception.printStackTrace();
-            }
-        });
-        SaveBtn.addActionListener(e -> {
-            String filename = "save";
-
-            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
-
-            try {
-                ArrayList<Object> objects = new ArrayList<>();
-                objects.add(ticketSystem);
-                objects.add(flightControl);
-                SerializationUtils.serialize(objects, filename);
-            } catch (IOException exception) {
-                exception.printStackTrace();
-            }
-        });
-        LoadBtn.addActionListener(e -> {
-            String filename = "save";
-
-            if (!FilenameTextField.getText().isEmpty()) filename = FilenameTextField.getText();
-
-            try {
-                ArrayList<Object> objects = (ArrayList<Object>) SerializationUtils.deserialize(filename);
-                ticketSystem = (TicketSystem) objects.get(0);
-                flightControl = (FlightControl) objects.get(1);
-                refreshPassengers();
-                refreshFlights();
-            } catch (IOException | ClassNotFoundException exception) {
-                exception.printStackTrace();
+                try {
+                    ArrayList<Object> objects = (ArrayList<Object>) SerializationUtils.deserialize(filename);
+                    ticketSystem = (TicketSystem) objects.get(0);
+                    flightControl = (FlightControl) objects.get(1);
+                    refreshPassengers();
+                    refreshFlights();
+                } catch (IOException | ClassNotFoundException exception) {
+                    exception.printStackTrace();
+                }
             }
         });
     }
@@ -318,7 +295,7 @@ public class GUI_Test {
     }
 
     private static void initFrame() {
-        GUI_Test gui_test = new GUI_Test();
+        GUI gui_test = new GUI();
         JFrame jFrame = new JFrame();
         jFrame.setContentPane(gui_test.MainFrame);
         jFrame.setSize(1080, 720);
@@ -332,7 +309,7 @@ public class GUI_Test {
         initPassengers(gui_test);
     }
 
-    private static void initFlights(GUI_Test gui_test) {
+    private static void initFlights(GUI gui_test) {
         ArrayList<String> flightIds = ticketSystem.getFlightIds();
         for (String f : flightIds) {
             System.out.println(f);
@@ -343,7 +320,7 @@ public class GUI_Test {
         }
     }
 
-    private static void initPassengers(GUI_Test gui_test) {
+    private static void initPassengers(GUI gui_test) {
         ArrayList<Passenger> passengers = ticketSystem.getPassengers();
 
         for (Passenger p : passengers) {

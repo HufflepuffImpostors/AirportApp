@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cyran.filipowski.gui.GUI_Test">
-  <grid id="27dc6" binding="MainFrame" layout-manager="GridLayoutManager" row-count="26" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cyran.filipowski.gui.GUI">
+  <grid id="27dc6" binding="MainFrame" layout-manager="GridLayoutManager" row-count="27" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="997" height="886"/>
@@ -12,7 +12,7 @@
     <children>
       <vspacer id="7a6af">
         <constraints>
-          <grid row="0" column="5" row-span="26" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="5" row-span="27" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <component id="ba72" class="javax.swing.JLabel">
@@ -408,7 +408,6 @@
       <component id="aff32" class="javax.swing.JButton" binding="RebookTicketBtn">
         <constraints>
           <grid row="12" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-
         </constraints>
         <properties>
           <text value="Rebook"/>
@@ -499,25 +498,11 @@
           <text value="Perform"/>
         </properties>
       </component>
-      <component id="d0435" class="javax.swing.JButton" binding="SaveBtn">
-        <constraints>
-          <grid row="21" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Save"/>
-        </properties>
-      </component>
-      <component id="61c0f" class="javax.swing.JButton" binding="LoadBtn">
-        <constraints>
-          <grid row="22" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Load"/>
-        </properties>
-      </component>
       <component id="3063c" class="javax.swing.JLabel">
         <constraints>
-          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="76" height="24"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Save and Load"/>
@@ -547,25 +532,11 @@
         </constraints>
         <properties/>
       </component>
-      <component id="d0435" class="javax.swing.JButton" binding="SaveBtn">
-        <constraints>
-          <grid row="21" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Save"/>
-        </properties>
-      </component>
-      <component id="61c0f" class="javax.swing.JButton" binding="LoadBtn">
-        <constraints>
-          <grid row="22" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Load"/>
-        </properties>
-      </component>
       <component id="3063c" class="javax.swing.JLabel">
         <constraints>
-          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="76" height="24"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Save and Load"/>
@@ -587,6 +558,22 @@
         </constraints>
         <properties>
           <text value="Filename"/>
+        </properties>
+      </component>
+      <component id="7abb8" class="javax.swing.JButton" binding="SerializeBtn">
+        <constraints>
+          <grid row="22" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save"/>
+        </properties>
+      </component>
+      <component id="5b6e6" class="javax.swing.JButton" binding="DeserializeBtn">
+        <constraints>
+          <grid row="23" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Load"/>
         </properties>
       </component>
     </children>
